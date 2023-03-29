@@ -1,3 +1,7 @@
+## To avoid caching and rebuild a specific image:
+> docker build --no-cache --pull mongodb/
+> docker compose up
+
 run.sh
 
 

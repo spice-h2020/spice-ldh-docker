@@ -5,10 +5,14 @@ conn = new Mongo();
 spicedb = conn.getDB("spice");
 spicedb.auth('spice-admin', 'DATAHUB1234567890');
 
-// 'spice_rdfjobs2' 'rdfjobskey012'
-// 1. CREATE COLLECTION
+// 1. CREATE COLLECTIONS
 spicedb.createCollection('spice_rdfjobs2')
-// 2. CREATE ROLE
+spicedb.createCollection('spice_policies')
+spicedb.createCollection('spice_policies_requests')
+spicedb.createCollection('spice_notifications')
+
+
+// 2. CREATE ROLsE
 spicedb.createRole(
     {
         role: "spice_rdfjobs2-R", 
@@ -33,7 +37,80 @@ spicedb.createRole(
         roles: []
       }
 )
-// 3. CREATE USER
+spicedb.createRole(
+    {
+        role: "spice_policies-R", 
+        privileges: [
+          {
+            actions: [ "find" ],
+            resource: { db: "spice", collection: "spice_policies" }
+          }
+        ],
+        roles: []
+      }
+)
+spicedb.createRole(
+    {
+        role: "spice_policies-W", 
+        privileges: [
+          {
+            actions: [ "update", "insert", "remove" ],
+            resource: { db: "spice", collection: "spice_policies" }
+          }
+        ],
+        roles: []
+      }
+)
+spicedb.createRole(
+    {
+        role: "spice_policies_requests-R", 
+        privileges: [
+          {
+            actions: [ "find" ],
+            resource: { db: "spice", collection: "spice_policies_requests" }
+          }
+        ],
+        roles: []
+      }
+)
+spicedb.createRole(
+    {
+        role: "spice_policies_requests-W", 
+        privileges: [
+          {
+            actions: [ "update", "insert", "remove" ],
+            resource: { db: "spice", collection: "spice_policies_requests" }
+          }
+        ],
+        roles: []
+      }
+)
+spicedb.createRole(
+    {
+        role: "spice_notifications-R", 
+        privileges: [
+          {
+            actions: [ "find" ],
+            resource: { db: "spice", collection: "spice_notifications" }
+          }
+        ],
+        roles: []
+      }
+)
+spicedb.createRole(
+    {
+        role: "spice_notifications-W", 
+        privileges: [
+          {
+            actions: [ "update", "insert", "remove" ],
+            resource: { db: "spice", collection: "spice_notifications" }
+          }
+        ],
+        roles: []
+      }
+)
+
+// 3. CREATE USERS
 spicedb.createUser({
   user: 'rdfjobskey012',
   pwd: 'rdfjobskey012',
@@ -48,8 +125,43 @@ spicedb.createUser({
     }
   ],
 });
-// 4. ASSIGN ROLE
-//# # 'spice_policies' 'policieskey012'
-//# # 'spice_policies_requests' 'policieskey012'
-//# # 'spice_notifications' 'notificationskey023'
+
+spicedb.createUser({
+  user: 'policieskey012',
+  pwd: 'policieskey012',
+  roles: [
+    {
+      role: 'spice_policies-R',
+      db: 'spice'
+    },
+    {
+      role: 'spice_policies-W',
+      db: 'spice'
+    },
+    {
+      role: 'spice_policies_requests-R',
+      db: 'spice'
+    },
+    {
+      role: 'spice_policies_requests-W',
+      db: 'spice'
+    }
+  ],
+});
+
+spicedb.createUser({
+  user: 'notificationskey023',
+  pwd: 'notificationskey023',
+  roles: [
+    {
+      role: 'spice_notifications-R',
+      db: 'spice'
+    },
+    {
+      role: 'spice_notifications-W',
+      db: 'spice'
+    }
+  ],
+});
+
 print ( "completed roles script" )
