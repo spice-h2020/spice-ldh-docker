@@ -1,0 +1,41 @@
+## Test in container
+
+$ mongo -u "spice-admin" -p "DATAHUB1234567890" spice
+> db.stats()
+
+
+
+
+
+
+
+
+
+
+
+
+## Old notes
+
+https://hub.docker.com/_/mongo
+
+
+# Create a Docker Image with Authentication Configured and Port Forwarding
+# 
+
+$ docker run -d --name mongodh -p 27017:27017 \
+    -e MONGO_INITDB_ROOT_USERNAME=admin \
+    -e MONGO_INITDB_ROOT_PASSWORD=pass4MONGO \
+    mongo
+
+# Install the Mongodb client for Brew
+# https://dba.stackexchange.com/questions/196330/is-it-possible-to-install-just-the-mongo-shell
+
+# Connect from the local machine
+
+$ mongo \
+        -u admin \
+        -p pass4MONGO \
+        --authenticationDatabase admin \
+        mongo
+> db.getName();
+test

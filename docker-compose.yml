@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+    mongodb:
+        container_name: spice-ldh-mongodb
+        build: 
+            context: ./mongodb
+            args:
+                MONGO_INITDB_ROOT_USERNAME: admin
+                MONGO_INITDB_ROOT_PASSWORD: MONGO1234567890
+                MONGO_INITDB_DATABASE: admin
+    blazegraph:
+        container_name: spice-ldh-blazegraph
+        image: nawer/blazegraph
+        ports:
+            - "8099:9999"
+    api:
+        container_name: spice-ldh-api
+        build:
+            context: ./api
+            args:
+                APIF_VERSION: v0.9.5
+        ports:
+            - "8090:80"
+    mysql:
+        container_name: spice-ldh-mysql
+        image: mysql/mysql-server:5.7
+        build:
+            args:
+                MYSQL_ROOT_PASSWORD: NMg17ruPknQSC2rF
+                MYSQL_DATABASE: spice_datahub
+                MYSQL_ROOT_HOST: "%"
+    portal:
+        container_name: spice-ldh-portal
+        build:
+            context: ./portal
+            args:
+                PORTAL_VERSION: v0.2.1
+        ports:
+            - "8091:80"
