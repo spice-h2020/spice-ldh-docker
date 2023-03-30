@@ -24,11 +24,16 @@ services:
     mysql:
         container_name: spice-ldh-mysql
         image: mysql/mysql-server:5.7
-        build:
-            args:
-                MYSQL_ROOT_PASSWORD: NMg17ruPknQSC2rF
-                MYSQL_DATABASE: spice_datahub
-                MYSQL_ROOT_HOST: "%"
+        environment:
+            MYSQL_ROOT_PASSWORD: NMg17ruPknQSC2rF
+            MYSQL_DATABASE: spice_datahub
+            #MYSQL_USER: root
+            #MYSQL_PASSWORD: NMg17ruPknQSC2rF
+            MYSQL_ROOT_HOST: '%'
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./mysql/setup.sql:/docker-entrypoint-initdb.d/setup.sql
     portal:
         container_name: spice-ldh-portal
         build:
