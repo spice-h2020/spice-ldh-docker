@@ -1,3 +1,5 @@
+<?php
+
 /**
  * Local Configuration Override
  *
