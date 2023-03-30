@@ -12,7 +12,7 @@ spicedb.createCollection('spice_policies_requests')
 spicedb.createCollection('spice_notifications')
 
 
-// 2. CREATE ROLsE
+// 2. CREATE ROLES
 spicedb.createRole(
     {
         role: "spice_rdfjobs2-R", 

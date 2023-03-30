@@ -10,4 +10,4 @@ ARG MONGO_INITDB_ROOT_PASSWORD
 ARG MONGO_INITDB_DATABASE
 
 ADD mongodb-init.js /docker-entrypoint-initdb.d/
-ADD mongodb-roles.js /docker-entrypoint-initdb.d/
+ADD mongodb-content.js /docker-entrypoint-initdb.d/
