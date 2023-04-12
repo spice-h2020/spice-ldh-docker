@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:7.1-apache
 ARG PORTAL_VERSION
 # File Author / Maintainer
 LABEL maintainer="Jason Carvalho https://github.com/JaseMK"
@@ -22,6 +22,10 @@ RUN cd /var/www && git clone https://github.com/spice-h2020/linked-data-hub.git 
 COPY config-local.php /var/www/linked-data-hub/config/autoload/local.php
 RUN cd /var/www/linked-data-hub && composer install && composer dump-autoload
 RUN chown -R www-data:www-data /var/www
+RUN mkdir /var/www/linked-data-hub/data
+RUN mkdir /var/www/linked-data-hub/data/cache
+RUN mkdir /var/www/linked-data-hub/data/tmpuploads
+RUN chown -R www-data:www-data /var/www/linked-data-hub/data
 
 ## Setup backend data via API
 # 'spice_rdfjobs2' 'rdfjobskey012'

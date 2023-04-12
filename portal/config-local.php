@@ -24,8 +24,8 @@ return [
     'mkdf-stream'   =>  [
             'user'  =>  'spice-admin',
             'pass'  =>  'DATAHUB1234567890',
-            'server-url'    =>  'http://spice-ldh-api:8090',
-            'public-url'    =>  'http://spice-ldh-api:8090',
+            'server-url'    =>  'http://spice-ldh-api',
+            'public-url'    =>  'http://spice-ldh-api',
             'access-request' => 'spice_access_requests',
             'dataset-metadata' => 'spice_metadata'
         ],

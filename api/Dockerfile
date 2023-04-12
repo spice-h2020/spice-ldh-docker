@@ -6,16 +6,17 @@ LABEL maintainer="Jason Carvalho https://github.com/JaseMK"
 LABEL version="1.0_$APIF_VERSION"
 LABEL description="SPICE LDH API image."
 
+
+RUN echo "extension=mongodb" | tee /usr/local/etc/php/conf.d/mongodb.ini
+COPY 000-Default.conf /etc/apache2/sites-enabled/000-Default.conf
+RUN a2enmod rewrite
+RUN a2enmod headers
+
 RUN apt-get update && apt-get install -y apt-utils git
 RUN apt-get install -y libcurl4-openssl-dev pkg-config libssl-dev unzip
 RUN pecl install mongodb
 
-RUN echo "extension=mongodb" | tee /usr/local/etc/php/conf.d/mongodb.ini
-COPY 000-Default.conf /etc/apache2/sites-enabled/000-Default.conf
-
 #RUN echo "<?php phpinfo(); " | tee /var/www/html/phpinfo.php
-
-RUN a2enmod rewrite
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer self-update --1 && ln -s $(composer config --global home) /root/composer
