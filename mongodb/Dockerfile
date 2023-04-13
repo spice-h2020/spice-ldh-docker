@@ -11,3 +11,6 @@ ARG MONGO_INITDB_DATABASE
 
 ADD mongodb-init.js /docker-entrypoint-initdb.d/
 ADD mongodb-content.js /docker-entrypoint-initdb.d/
+
+COPY policies_array.json /home
+# RUN cd /home && mongoimport --db=spice --collection=spice_policies --file=/home/policies_array.json --jsonArray 
