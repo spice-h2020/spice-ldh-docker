@@ -10,9 +10,34 @@ spicedb.createCollection('spice_rdfjobs2')
 spicedb.createCollection('spice_policies')
 spicedb.createCollection('spice_policies_requests')
 spicedb.createCollection('spice_notifications')
+spicedb.createCollection('spice_activity_log')
 
 
 // 2. CREATE ROLES
+spicedb.createRole(
+    {
+        role: "spice_activity_log-R", 
+        privileges: [
+          {
+            actions: [ "find" ],
+            resource: { db: "spice", collection: "spice_activity_log" }
+          }
+        ],
+        roles: []
+      }
+)
+spicedb.createRole(
+    {
+        role: "spice_activity_log-W", 
+        privileges: [
+          {
+            actions: [ "update", "insert", "remove" ],
+            resource: { db: "spice", collection: "spice_activity_log" }
+          }
+        ],
+        roles: []
+      }
+)
 spicedb.createRole(
     {
         role: "spice_rdfjobs2-R", 
@@ -161,6 +186,17 @@ spicedb.createUser({
       role: 'spice_notifications-W',
       db: 'spice'
     }
+  ],
+});
+
+spicedb.createUser({
+  user: 'activityreadkey220',
+  pwd: 'activityreadkey220',
+  roles: [
+    {
+      role: 'spice_activity_log-R',
+      db: 'spice'
+    },
   ],
 });
 

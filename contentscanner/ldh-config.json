@@ -1,0 +1,14 @@
+{
+  "ldhServer": "http://spice-ldh-api",
+  "activityLog": {
+    "datasetID": "spice_activity_log",
+    "key": "activityreadkey220",
+    "pagesize": 100,
+    "initialTimestamp": "1667306718",
+    "datasetsToExclude": ["spice_rdfjobs2", "spice_policies", "spice_policies_requests", "spice_metadata", "spice_notifications", "spice_access_requests"]
+  },
+  "notifications": {
+    "datasetID": "spice_notifications",
+    "key": "notificationskey023"
+  }
+}
