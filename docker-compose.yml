@@ -42,7 +42,7 @@ services:
                 PORTAL_VERSION: v0.2.1
         ports:
             - "8091:80"
-    contenscanner:
+    contentscanner:
         container_name: spice-ldh-scanner
         build: 
             context: ./contentscanner
