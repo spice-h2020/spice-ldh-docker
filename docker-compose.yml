@@ -8,6 +8,8 @@ services:
                 MONGO_INITDB_ROOT_USERNAME: admin
                 MONGO_INITDB_ROOT_PASSWORD: MONGO1234567890
                 MONGO_INITDB_DATABASE: admin
+        volumes:
+            - mongodata:/data/db
     blazegraph:
         container_name: spice-ldh-blazegraph
         image: nawer/blazegraph
@@ -48,3 +50,5 @@ services:
             context: ./contentscanner
             args:
                 SCANNER_VERSION: v0.5.1
+volumes:
+  mongodata:
