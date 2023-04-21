@@ -50,5 +50,11 @@ services:
             context: ./contentscanner
             args:
                 SCANNER_VERSION: v0.5.1
+    rdfpublisher:
+        container_name: spice-ldh-rdfpublisher
+        build:
+            context: ./rdfpublisher
+            args:
+                PUBLISHER_VERSION: v0.3.5.pr2
 volumes:
   mongodata:
