@@ -8,5 +8,6 @@ RUN wget https://github.com/spice-h2020/rdf.uploader/releases/download/v0.3.5.pr
 COPY config.properties .
 COPY blazegraph.properties .
 COPY timestamp ./tmp/timestamp
+COPY saQuery.sparql .
 
 CMD ["java", "-jar", "spice.rdf-uploader-v0.3.5.jar"]
