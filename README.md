@@ -1,12 +1,13 @@
 # SPICE Linked Data Hub (LDH) -- Docker release
 
-This project includes the final packaged version of the SPICE Linked Data Hub (LDH), developed by the EU-funded project [SPICE](http://spice-h2020.eu) including links to the resources required for setting up an instance of the LDH platform and instructions for deploying new LDH instances. 
+This project includes the final packaged version of the SPICE Linked Data Hub (LDH), developed by the EU-funded project [SPICE](http://spice-h2020.eu), including links to the resources required for setting up an instance of the LDH platform and instructions for deploying new LDH instances. 
 
 
-For ease of deployment, the LDH and its constituent components are made available here as a series of Docker2 containers. Docker is a popular tool used to create, distribute, and deploy software applications. In this documentation, we will discuss the steps involved in downloading and running the Docker containers and how to access the resulting LDH services once they are up and running. 
+For ease of deployment, the LDH and its constituent components are made available here as a series of [Docker](https://www.docker.com/get-started/) containers. 
+In what follows, we will cover the steps involved in downloading and running the Docker containers and how to access the resulting LDH services once they are up and running. 
 
 ### Installing and running the containers 
-Install Docker. If Docker is not already installed on your system, follow the instructions on the Docker website3 to install it.   
+Install Docker. If Docker is not already installed on your system, follow the instructions on the [Docker website](https://www.docker.com/get-started/ ) to install it.   
 
 Download the latest version of the SPICE LDH docker environment from its GitHub repository, at https://github.com/spice-h2020/spice-ldh-docker, using the command: 
 
